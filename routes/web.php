@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index')->name('index');
+Route::get('/edit_prod/{id}', 'IndexController@editProduct')->name('edit_prod');
+Route::patch('/update_prod/{id}', 'IndexController@updateProduct')->name('update_prod');
+Route::post('/sales/add', 'SalesController@addSale')->name('sales.add');
+Route::get('/sales/create', 'SalesController@create')->name('sales.create');
+Route::post('/sales', 'SalesController@store')->name('sales.store');
+Route::resource('/sales', 'SalesController');
